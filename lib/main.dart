@@ -1,9 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter/material.dart';
 
 import 'constants/theme.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en'), Locale('th')],
+      path: 'res/language',
+      fallbackLocale: const Locale('th'),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +24,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
@@ -19,7 +34,7 @@ class MyApp extends StatelessWidget {
           .lightTheme, // applies this theme if the device theme is light mode
       darkTheme: ThemeClass
           .darkTheme, // applies this theme if the device theme is dark mode
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: tr('app.title')),
     );
   }
 }
@@ -78,6 +93,24 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Theme.of(context).colorScheme.inverseSurface,
           ),
         ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: TextButton(
+              child: Text(
+                tr('app.changeLang'),
+                style: const TextStyle(color: Colors.white),
+              ),
+              onPressed: () => setState(() {
+                if (context.locale.languageCode == 'en') {
+                  context.setLocale(const Locale('th'));
+                } else {
+                  context.setLocale(const Locale('en'));
+                }
+              }),
+            ),
+          )
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -98,19 +131,21 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            const Text('app.description').tr(),
             Text(
-              '$_counter',
+              "$_counter",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Text(
+              'app.counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ).plural(_counter),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: tr('Increment'),
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
