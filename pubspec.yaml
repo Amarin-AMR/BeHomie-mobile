@@ -15,6 +15,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.4.0
+  easy_localization: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -23,13 +24,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  assets:
+    - res/language/
 
   uses-material-design: true
-
-
-  # assets:
-    # - res/images/
-
 #  fonts:
 #     - family: Opun
 #       fonts:
