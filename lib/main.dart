@@ -1,5 +1,6 @@
-import 'package:behomie/constants/theme.dart';
 import 'package:flutter/material.dart';
+
+import 'constants/theme.dart';
 
 void main() {
   runApp(const MyApp());
