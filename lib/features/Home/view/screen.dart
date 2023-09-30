@@ -77,12 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 "Value: $counter",
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              // Text(
-              //   'app.counter',
-              //   style: Theme.of(context).textTheme.headlineMedium,
-              // ).plural(_counter),
+              Text(
+                'app.counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ).plural(counter),
               FloatingActionButton(
-                onPressed: () => ref.read(homeViewModelProvider.notifier),
+                onPressed: () =>
+                    ref.read(homeViewModelProvider.notifier).increment(),
                 tooltip: tr('Increment'),
                 child: const Icon(Icons.add),
               ),
