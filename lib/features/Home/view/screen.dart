@@ -2,30 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 
-import 'package:behomie/constants/theme.dart';
 import 'package:behomie/features/Home/viewmodel/viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
-      theme: ThemeClass
-          .lightTheme, // applies this theme if the device theme is light mode
-      darkTheme: ThemeClass
-          .darkTheme, // applies this theme if the device theme is dark mode
-      home: const MyHomePage(),
-    );
-  }
-}
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
