@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:behomie/network/connectivity_status.dart';
 import 'package:behomie/features/Home/viewmodel/viewmodel.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -45,6 +46,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Consumer(builder: (BuildContext context, WidgetRef ref, child) {
         final counter = ref.watch(homeViewModelProvider);
+        var connectivityStatusProvider =
+            ref.watch(connectivityStatusNotifierProvider);
+        ref.read(connectivityStatusNotifierProvider.notifier).update();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                connectivityStatusProvider == ConnectivityStatus.isConnected
+                    ? 'Is Connected to Internet'
+                    : 'Is Disconnected from Internet',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+              backgroundColor:
+                  connectivityStatusProvider == ConnectivityStatus.isConnected
+                      ? Colors.green
+                      : Colors.red,
+            ),
+          );
+        });
 
         return Center(
           child: Column(
