@@ -1,11 +1,11 @@
 import 'package:behomie/features/Home/model/example_user.dart';
+import 'package:behomie/features/Home/viewmodel/viewmodel.dart';
+import 'package:behomie/network/connectivity_status.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter/material.dart';
-
-import 'package:behomie/network/connectivity_status.dart';
-import 'package:behomie/features/Home/viewmodel/viewmodel.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

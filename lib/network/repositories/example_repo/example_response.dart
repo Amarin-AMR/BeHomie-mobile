@@ -1,4 +1,5 @@
-import 'package:behomie/features/Home/model/example_list.dart';
+import 'package:behomie/features/Home/model/example_user_list.dart';
+import 'package:behomie/constants/constants.dart' as constants;
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 class ExampleRepository {
   final _dio = Dio();
 
-  final String _examplePath = "http://192.168.1.9:4001/example";
+  final String _examplePath = "${constants.apiBaseUrl}+example";
   //up to your ip
 
   Future<ExampleListUser> requestExample() async {

@@ -1,4 +1,4 @@
-import 'package:behomie/features/Home/model/example_list.dart';
+import 'package:behomie/features/Home/model/example_user_list.dart';
 
 import 'package:behomie/network/repositories/example_repo/example_response.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
