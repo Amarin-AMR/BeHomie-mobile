@@ -1,7 +1,7 @@
 import 'package:behomie/features/Home/model/example_user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'example_list.g.dart';
+part 'example_user_list.g.dart';
 
 @JsonSerializable()
 class ExampleListUser {
