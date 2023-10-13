@@ -18,7 +18,7 @@ class ConnectivityStatusNotifier extends _$ConnectivityStatusNotifier {
     return ConnectivityStatus.notDetermined;
   }
 
-  void update() {
+  void checkInternet() {
     if (state == ConnectivityStatus.isConnected) {
       lastResult = ConnectivityStatus.isConnected;
     } else {
